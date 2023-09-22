@@ -1,0 +1,36 @@
+{% extends 'partials/base.html' %}
+{% block title %} Predictions {% endblock %}
+
+{% block content %} 
+    <h1>Results</h1>
+    <div class = 'container-md'>
+        <div class = 'row mt-4'>
+            <div class = 'col-md-8 offset-md-2'>
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th scope='col'>Name</th>
+                            <th scope='col'>Age</th>
+                            <th scope='col'>Number of years married</th>
+                            <th scope='col'>Religiousness</th>
+                            <th scope='col'>Rating of Marriage</th>
+                            <th scope='col'>Predictions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in predicted_affairs %}
+                        <tr>
+                            <th scope='row'>{{ data.name }}</th>
+                            <td>{{ data.age }}</td>
+                            <td>{{ data.years_married }}</td>
+                            <td>{{ data.religiousness }}</td>
+                            <td>{{ data.rating_of_marriage }}</td>
+                            <td>{{ data.predictions }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

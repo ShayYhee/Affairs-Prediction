@@ -1,0 +1,37 @@
+{% extends 'partials/base.html' %}
+{% block title %} Home {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %} 
+
+    <div class = 'container mt-4 mb-4'>
+
+        <h2 >Is your partner having an affair?</h2>
+        <h4>Find out!</h4>
+
+        <button class='btn btn-primary' onclick="hideShow()" value='Hint'>Hint</button>
+        
+        <div id='hint' class='hint d-none mt-4'>
+            <p>
+                age must be greater than or equal to 18<br>
+                for Religiousness, rating on a scale of 1-5<br>
+                for Marriage rating, on a scale of 1-5<br>
+            </p>
+        </div>
+
+        <div class = 'row mt-5'>
+            <div class = 'col-md-8 offset-md-2'>
+                <div class = 'card shadow'>
+                    <div class = 'card-body'>
+                        <form method='POST'>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <input class='btn btn-primary' type='submit'value='Predict'>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} <script src='script.js'></script> {% endcomment %}
+{% endblock %}
